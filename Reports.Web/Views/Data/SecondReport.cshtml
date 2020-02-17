@@ -1,0 +1,68 @@
+﻿@section head {
+}
+
+<div class="container-fluid overflow-auto">
+    <table id="myDataTable" class="display">
+        <thead>
+            <tr>
+                <th>ArrivalCity</th>
+                <th>DepartureCity</th>
+                <th>SummaryTrips</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+
+@section scripts {
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var groupColumn = 0;
+            $('#myDataTable').DataTable({
+                processing: true,
+                ajax: {
+                    url: '/Data/GetSecondReportData',
+                    type: 'POST',
+                    dataSrc: ''
+                },
+                columns: [
+                    { title: 'Arrival City', data: 'arrivalCity', name: 'arrivalCity' },
+                    { title: 'DepartureCity', data: 'departureCity', name: 'DepartureCity' },
+                    { title: 'SummaryTrips', data: 'summaryTrips', name: 'summaryTrips' }
+                ],
+                columnDefs: [
+                    { "visible": false, "targets": groupColumn }
+                ],
+                order: [[groupColumn, 'asc']],
+                drawCallback: function (settings) {
+                    var api = this.api();
+                    var rows = api.rows({ page: 'current' }).nodes();
+                    var last = null;
+
+                    api.column(groupColumn, { page: 'current' }).data().each(function (group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before(
+                                '<tr class="group"><td colspan="5">' + group + '</td></tr>'
+                            );
+                            last = group;
+                        }
+                    });
+                }
+            });
+
+            $('#example tbody').on('click', 'tr.group', function () {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+                    table.order([groupColumn, 'desc']).draw();
+                }
+                else {
+                    table.order([groupColumn, 'asc']).draw();
+                }
+            });
+        })
+    </script>
+}

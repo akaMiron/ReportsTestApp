@@ -1,0 +1,159 @@
+﻿@section head {
+}
+
+<div class="container-fluid overflow-auto">
+    <table id="myDataTable" class="display">
+        <thead>
+            <tr>
+                <th>ArrivalCity</th>
+                <th>DepartureCity</th>
+                <th>SummaryTrips</th>
+                <th>PlannedTrips</th>
+                <th>Day1</th>
+                <th>Day2</th>
+                <th>Day3</th>
+                <th>Day4</th>
+                <th>Day5</th>
+                <th>Day6</th>
+                <th>Day7</th>
+                <th>Day8</th>
+                <th>Day9</th>
+                <th>Day10</th>
+                <th>Day11</th>
+                <th>Day12</th>
+                <th>Day13</th>
+                <th>Day14</th>
+                <th>Day15</th>
+                <th>Day16</th>
+                <th>Day17</th>
+                <th>Day18</th>
+                <th>Day19</th>
+                <th>Day20</th>
+                <th>Day21</th>
+                <th>Day22</th>
+                <th>Day23</th>
+                <th>Day24</th>
+                <th>Day25</th>
+                <th>Day26</th>
+                <th>Day27</th>
+                <th>Day28</th>
+                <th>Day29</th>
+                <th>Day30</th>
+                <th>Day31</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>ArrivalCity</th>
+                <th>DepartureCity</th>
+            </tr>
+        </tfoot>
+
+    </table>
+</div>
+
+
+@section scripts {
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //var groupColumn = 0;
+            $('#myDataTable').DataTable({
+                processing: true,
+                ajax: {
+                    url: '/Data/GetFirstReportData',
+                    type: 'POST',
+                    dataSrc: ''
+                },
+                columns: [
+                    { title: 'Arrival City', data: 'arrivalCity', name: 'arrivalCity' },
+                    { title: 'DepartureCity', data: 'departureCity', name: 'DepartureCity' },
+                    { title: 'SummaryTrips', data: 'summaryTrips', name: 'summaryTrips' },
+                    { title: 'PlannedTrips', data: 'plannedTrips', name: 'plannedTrips' },
+                    { title: 'Day1', data: 'day1', name: 'day1' },
+                    { title: 'Day2', data: 'day2', name: 'day2' },
+                    { title: 'Day3', data: 'day3', name: 'day3' },
+                    { title: 'Day4', data: 'day4', name: 'day4' },
+                    { title: 'Day5', data: 'day5', name: 'day5' },
+                    { title: 'Day6', data: 'day6', name: 'day6' },
+                    { title: 'Day7', data: 'day7', name: 'day7' },
+                    { title: 'Day8', data: 'day8', name: 'day8' },
+                    { title: 'Day9', data: 'day9', name: 'day9' },
+                    { title: 'Day10', data: 'day10', name: 'day10' },
+                    { title: 'Day11', data: 'day11', name: 'day11' },
+                    { title: 'Day12', data: 'day12', name: 'day12' },
+                    { title: 'Day13', data: 'day13', name: 'day13' },
+                    { title: 'Day14', data: 'day14', name: 'day14' },
+                    { title: 'Day15', data: 'day15', name: 'day15' },
+                    { title: 'Day16', data: 'day16', name: 'day16' },
+                    { title: 'Day17', data: 'day17', name: 'day17' },
+                    { title: 'Day18', data: 'day18', name: 'day18' },
+                    { title: 'Day19', data: 'day19', name: 'day19' },
+                    { title: 'Day20', data: 'day20', name: 'day20' },
+                    { title: 'Day21', data: 'day21', name: 'day21' },
+                    { title: 'Day22', data: 'day22', name: 'day22' },
+                    { title: 'Day23', data: 'day23', name: 'day23' },
+                    { title: 'Day24', data: 'day24', name: 'day24' },
+                    { title: 'Day25', data: 'day25', name: 'day25' },
+                    { title: 'Day26', data: 'day26', name: 'day26' },
+                    { title: 'Day27', data: 'day27', name: 'day27' },
+                    { title: 'Day28', data: 'day28', name: 'day28' },
+                    { title: 'Day29', data: 'day29', name: 'day29' },
+                    { title: 'Day30', data: 'day30', name: 'day30' },
+                    { title: 'Day31', data: 'day31', name: 'day31' },
+                ],
+                initComplete: function () {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var select = $('<select><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>');
+                        });
+                    });
+                },
+                //columnDefs: [
+                //    { "visible": false, "targets": groupColumn }
+                //],
+                //order: [[groupColumn, 'asc']],
+                //drawCallback: function (settings) {
+                //    var api = this.api();
+                //    var rows = api.rows({ page: 'current' }).nodes();
+                //    var last = null;
+
+                //    api.column(groupColumn, { page: 'current' }).data().each(function (group, i) {
+                //        if (last !== group) {
+                //            $(rows).eq(i).before(
+                //                '<tr class="group"><td colspan="5">' + group + '</td></tr>'
+                //            );
+                //            last = group;
+                //        }
+                //    });
+                //}
+            });
+
+            //$('#example tbody').on('click', 'tr.group', function () {
+            //    var currentOrder = table.order()[0];
+            //    if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+            //        table.order([groupColumn, 'desc']).draw();
+            //    }
+            //    else {
+            //        table.order([groupColumn, 'asc']).draw();
+            //    }
+            //});
+        })
+    </script>
+}

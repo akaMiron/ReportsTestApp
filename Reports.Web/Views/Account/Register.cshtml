@@ -1,0 +1,24 @@
+﻿@model Reports.Web.ViewModels.RegisterViewModel
+
+<h2>Register new user</h2>
+<form method="post" asp-controller="Account" asp-action="Register">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <label for="inputEmail" asp-for="Email"></label><br />
+        <input id="inputEmail" class="form-control" asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label for="inputPassword" asp-for="Password"></label><br />
+        <input id="inputPassword" class="form-control" asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PasswordConfirm"></label><br />
+        <input id="inputPasswordConfirm" class="form-control" asp-for="PasswordConfirm" />
+        <span asp-validation-for="PasswordConfirm"></span>
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Register" />
+    </div>
+</form>

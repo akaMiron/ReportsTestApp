@@ -1,0 +1,16 @@
+C:\Users\Professional\Desktop\Reports\Reports.Data\obj\Debug\netcoreapp3.1\Reports.Data.csprojAssemblyReference.cache
+C:\Users\Professional\Desktop\Reports\Reports.Data\obj\Debug\netcoreapp3.1\Reports.Data.AssemblyInfoInputs.cache
+C:\Users\Professional\Desktop\Reports\Reports.Data\obj\Debug\netcoreapp3.1\Reports.Data.AssemblyInfo.cs
+C:\Users\Professional\Documents\Reports\Reports.Data\bin\Debug\netcoreapp3.1\Reports.Data.deps.json
+C:\Users\Professional\Documents\Reports\Reports.Data\bin\Debug\netcoreapp3.1\Reports.Data.runtimeconfig.json
+C:\Users\Professional\Documents\Reports\Reports.Data\bin\Debug\netcoreapp3.1\Reports.Data.runtimeconfig.dev.json
+C:\Users\Professional\Documents\Reports\Reports.Data\bin\Debug\netcoreapp3.1\Reports.Data.dll
+C:\Users\Professional\Documents\Reports\Reports.Data\bin\Debug\netcoreapp3.1\Reports.Data.pdb
+C:\Users\Professional\Documents\Reports\Reports.Data\bin\Debug\netcoreapp3.1\Reports.Core.dll
+C:\Users\Professional\Documents\Reports\Reports.Data\bin\Debug\netcoreapp3.1\Reports.Core.pdb
+C:\Users\Professional\Documents\Reports\Reports.Data\obj\Debug\netcoreapp3.1\Reports.Data.csprojAssemblyReference.cache
+C:\Users\Professional\Documents\Reports\Reports.Data\obj\Debug\netcoreapp3.1\Reports.Data.AssemblyInfoInputs.cache
+C:\Users\Professional\Documents\Reports\Reports.Data\obj\Debug\netcoreapp3.1\Reports.Data.AssemblyInfo.cs
+C:\Users\Professional\Documents\Reports\Reports.Data\obj\Debug\netcoreapp3.1\Reports.Data.csproj.CopyComplete
+C:\Users\Professional\Documents\Reports\Reports.Data\obj\Debug\netcoreapp3.1\Reports.Data.dll
+C:\Users\Professional\Documents\Reports\Reports.Data\obj\Debug\netcoreapp3.1\Reports.Data.pdb
